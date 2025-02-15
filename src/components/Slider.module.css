@@ -1,0 +1,99 @@
+/* CSS Variables for consistent values */
+:root {
+  /* Dimensions */
+  --slider-height: 20px;
+  --thumb-width: 50px;
+  --thumb-padding: 25px;
+  
+  /* Colors */
+  --track-gradient-start: #afafaf;
+  --track-gradient-end: #cfd0d0;
+  --border-color: #9b9b9b;
+}
+
+/* Apply border-box sizing to all elements for consistent sizing */
+* {
+  box-sizing: border-box;
+}
+
+/* Main container for the entire slider component */
+.container {
+  padding: 8px 0;
+  width: 100%;
+}
+
+/* Style for the label text above the slider */
+.label {
+  color: #000;
+  font-size: 14px;
+  font-style: bold;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  margin-bottom: 1px;
+  margin-left: 6px;
+}
+
+/* Container that holds the track and ensures proper sizing */
+.sliderContainer {
+  align-items: center;
+  display: flex;
+  height: var(--slider-height);
+  position: relative;
+  width: 300px;
+}
+
+/* The main track/rail of the slider */
+.track {
+  background: linear-gradient(
+    to bottom,
+    var(--track-gradient-start),
+    var(--track-gradient-end)
+  );
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+  cursor: pointer;
+  height: var(--slider-height);
+  padding: 0 var(--thumb-padding);
+  position: relative;
+  width: 100%;
+}
+
+/* The filled portion of the track */
+.progress {
+  height: 100%;
+  pointer-events: none; /* Allows clicks to pass through to track */
+  position: relative;
+  top: 0;
+}
+
+/* The draggable thumb element */
+.thumb {
+  align-items: center;
+  background-color: #f4f4f4;
+  border-inline: 1px solid var(--border-color);
+  border-radius: 11px;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+  cursor: grab;
+  display: flex;
+  height: 18px;
+  justify-content: center;
+  padding: 2px 4px;
+  position: relative;
+  top: -50%; /* Pull thumb up to center it on track */
+  transform: translate(-50%, -50%); /* Center thumb horizontally and vertically */
+  user-select: none; /* Prevent text selection while dragging */
+  width: var(--thumb-width);
+}
+
+/* Style when thumb is being dragged */
+.thumb:active {
+  cursor: grabbing;
+}
+
+/* The value label inside the thumb */
+.valueLabel {
+  color: #1c1c1c;
+  font-size: 11px;
+  font-weight: 700;
+  line-height: 1;
+} 
